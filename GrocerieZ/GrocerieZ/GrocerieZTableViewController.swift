@@ -7,23 +7,19 @@
 //
 
 import UIKit
+import GrocerieZKit
 
 class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var items: [String] = []
-    let userDefaults: NSUserDefaults = NSUserDefaults(suiteName: "group.com.zuehlke.GrocerieZWatchTest")!
+    let items:GKItems = GKItems()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let defaultsItems = userDefaults.arrayForKey("items")? {
-            for defaultItem in defaultsItems {
-                items.append(defaultItem as String)
-            }
-        }
     }
 
-    // MARK: - Table view data source
 
+    // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -58,8 +54,7 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField!) {
         items[textField.tag] = textField.text
-        userDefaults.setObject(items, forKey: "items")
-        userDefaults.synchronize()
+        items.save()
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -70,7 +65,7 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Custom methods
     
     @IBAction func addItem(sender: AnyObject) {
-        items.append("")
+        items.add("")
         tableView.reloadData()
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: items.count - 1, inSection: 0)) as GrocerieZTableViewCell
         cell.textField.becomeFirstResponder()
