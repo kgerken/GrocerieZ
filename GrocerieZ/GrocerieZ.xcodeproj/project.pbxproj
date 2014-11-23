@@ -87,6 +87,8 @@
 		10A0A0F61A22477000F3D9F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10A0A0F71A22477000F3D9F9 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		10A0A0F91A22477000F3D9F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		10A0A1051A224C5E00F3D9F9 /* GrocerieZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GrocerieZ.entitlements; sourceTree = "<group>"; };
+		10A0A1061A224F1C00F3D9F9 /* GrocerieZ WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "GrocerieZ WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		10A0A0AD1A22341E00F3D9F9 /* GrocerieZ */ = {
 			isa = PBXGroup;
 			children = (
+				10A0A1051A224C5E00F3D9F9 /* GrocerieZ.entitlements */,
 				10A0A0B01A22341E00F3D9F9 /* AppDelegate.swift */,
 				10A0A0D61A223A2D00F3D9F9 /* GrocerieZTableViewController.swift */,
 				10A0A0B41A22341E00F3D9F9 /* Main.storyboard */,
@@ -188,6 +191,7 @@
 		10A0A0E21A22476F00F3D9F9 /* GrocerieZ WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				10A0A1061A224F1C00F3D9F9 /* GrocerieZ WatchKit Extension.entitlements */,
 				10A0A0E61A22477000F3D9F9 /* InterfaceController.swift */,
 				10A0A0E81A22477000F3D9F9 /* NotificationController.swift */,
 				10A0A0EA1A22477000F3D9F9 /* GlanceController.swift */,
@@ -308,6 +312,12 @@
 				TargetAttributes = {
 					10A0A0AA1A22341E00F3D9F9 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = M6T2825W2N;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					10A0A0BF1A22341E00F3D9F9 = {
 						CreatedOnToolsVersion = 6.2;
@@ -315,6 +325,12 @@
 					};
 					10A0A0DD1A22476F00F3D9F9 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = M6T2825W2N;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					10A0A0EF1A22477000F3D9F9 = {
 						CreatedOnToolsVersion = 6.2;
@@ -530,10 +546,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GrocerieZ/GrocerieZ.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GrocerieZ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -541,10 +561,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GrocerieZ/GrocerieZ.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GrocerieZ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -617,6 +641,9 @@
 		10A0A1021A22477000F3D9F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "GrocerieZ WatchKit Extension/GrocerieZ WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -624,6 +651,7 @@
 				INFOPLIST_FILE = "GrocerieZ WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -631,9 +659,13 @@
 		10A0A1031A22477000F3D9F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "GrocerieZ WatchKit Extension/GrocerieZ WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "GrocerieZ WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

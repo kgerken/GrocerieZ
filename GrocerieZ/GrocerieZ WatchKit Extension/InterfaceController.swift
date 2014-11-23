@@ -12,6 +12,8 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var testLabel: WKInterfaceLabel!
+    
     override init(context: AnyObject?) {
         // Initialize variables here.
         super.init(context: context)

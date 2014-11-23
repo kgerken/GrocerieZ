@@ -10,10 +10,18 @@ import UIKit
 
 class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var items: [String] = ["Eggs", "Milk"]
+    var items: [String]!
+    let userDefaults: NSUserDefaults! = NSUserDefaults(suiteName: "group.com.zuehlke.GrocerieZWatchTest")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let defaultsItems = userDefaults.arrayForKey("items")? {
+            for defaultItem in defaultsItems {
+                items.append(defaultItem.string)
+            }
+        } else {
+            items = []
+        }
     }
 
     // MARK: - Table view data source
@@ -43,16 +51,21 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
+    }
 
     // MARK: UITextField delegate
     
     func textFieldDidEndEditing(textField: UITextField!) {
         items[textField.tag] = textField.text
+        userDefaults.setObject(items, forKey: "items")
+        userDefaults.synchronize()
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     
