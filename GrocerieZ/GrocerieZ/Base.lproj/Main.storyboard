@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KpR-y3-yAp">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+    </dependencies>
+    <scenes>
+        <!--GrocerieZTableViewController-->
+        <scene sceneID="hR6-ee-5Jw">
+            <objects>
+                <tableViewController title="GrocerieZTableViewController" id="ttb-Gn-sTC" customClass="GrocerieZTableViewController" customModule="GrocerieZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tDx-lg-3oh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groceriezCell" id="64f-z3-MUr" customClass="GrocerieZTableViewCell" customModule="GrocerieZ" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="64f-z3-MUr" id="duD-1P-qcf">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-k5-vBr">
+                                            <rect key="frame" x="21" y="10" width="559" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="ttb-Gn-sTC" id="yBs-XJ-q4y"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="fFc-k5-vBr" id="0Bz-Wc-eQQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ttb-Gn-sTC" id="JXi-QF-Y8D"/>
+                            <outlet property="delegate" destination="ttb-Gn-sTC" id="g4K-8w-vyV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="GrocerieZ" id="Fp9-tF-GVa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VJP-CO-RIj">
+                            <connections>
+                                <action selector="addItem:" destination="ttb-Gn-sTC" id="hz8-Xc-0GA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wFh-TD-W8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0E1-M7-QdP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KpR-y3-yAp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ya-Xi-Xx6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ttb-Gn-sTC" kind="relationship" relationship="rootViewController" id="Zq2-ml-uNK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-5t-F3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55" y="287"/>
+        </scene>
+    </scenes>
+</document>
