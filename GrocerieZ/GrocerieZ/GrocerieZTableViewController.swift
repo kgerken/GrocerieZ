@@ -10,17 +10,15 @@ import UIKit
 
 class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var items: [String]!
-    let userDefaults: NSUserDefaults! = NSUserDefaults(suiteName: "group.com.zuehlke.GrocerieZWatchTest")
+    var items: [String] = []
+    let userDefaults: NSUserDefaults = NSUserDefaults(suiteName: "group.com.zuehlke.GrocerieZWatchTest")!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let defaultsItems = userDefaults.arrayForKey("items")? {
             for defaultItem in defaultsItems {
-                items.append(defaultItem.string)
+                items.append(defaultItem as String)
             }
-        } else {
-            items = []
         }
     }
 
