@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		108B3C911A23877E007CD29A /* GrocerieZRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B3C901A23877E007CD29A /* GrocerieZRowController.swift */; };
 		10A0A0B11A22341E00F3D9F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0A0B01A22341E00F3D9F9 /* AppDelegate.swift */; };
 		10A0A0B61A22341E00F3D9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0A0B41A22341E00F3D9F9 /* Main.storyboard */; };
 		10A0A0B81A22341E00F3D9F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0A0B71A22341E00F3D9F9 /* Images.xcassets */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		108B3C901A23877E007CD29A /* GrocerieZRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrocerieZRowController.swift; sourceTree = "<group>"; };
 		10A0A0AB1A22341E00F3D9F9 /* GrocerieZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrocerieZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0A0AF1A22341E00F3D9F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10A0A0B01A22341E00F3D9F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				10A0A0EA1A22477000F3D9F9 /* GlanceController.swift */,
 				10A0A0EC1A22477000F3D9F9 /* Images.xcassets */,
 				10A0A0E31A22476F00F3D9F9 /* Supporting Files */,
+				108B3C901A23877E007CD29A /* GrocerieZRowController.swift */,
 			);
 			path = "GrocerieZ WatchKit Extension";
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A0A0E91A22477000F3D9F9 /* NotificationController.swift in Sources */,
+				108B3C911A23877E007CD29A /* GrocerieZRowController.swift in Sources */,
 				10A0A0E71A22477000F3D9F9 /* InterfaceController.swift in Sources */,
 				10A0A0EB1A22477000F3D9F9 /* GlanceController.swift in Sources */,
 			);
@@ -1011,6 +1015,7 @@
 				2C42734C1A22740C0026BDB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C4273511A22740C0026BDB1 /* Build configuration list for PBXNativeTarget "GrocerieZKitTests" */ = {
 			isa = XCConfigurationList;
@@ -1019,6 +1024,7 @@
 				2C42734E1A22740C0026BDB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
