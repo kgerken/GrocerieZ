@@ -13,6 +13,8 @@ class AmountInterfaceController: WKInterfaceController {
  
     @IBOutlet weak var itemLabel: WKInterfaceLabel!
     @IBOutlet weak var amountLabel: WKInterfaceLabel!
+    @IBOutlet weak var amountSlider: WKInterfaceSlider!
+
     let items:GKItems = GKItems()
     let selectedIndex:Int!
     
@@ -22,16 +24,23 @@ class AmountInterfaceController: WKInterfaceController {
         setTitle("GrocerieZ")
         selectedIndex = context as Int
         NSLog("%@ init", self)
-        itemLabel.setText(items[context as Int])
+        itemLabel.setText(items.getItemName(context as Int))
         
+        let savedAmount = items.getAmount(selectedIndex)
+        amountSlider.setValue(Float(savedAmount))
+        amountLabel.setText("\(savedAmount)")
+
+    }
+    
+    @IBAction func deleteButtonPressed() {
+        items.removeAtIndex(selectedIndex)
+        popController()
     }
     
     func sliderChanged(value: Int) {
-        if value > 1 {
-            let oldItem = items[selectedIndex]
-            amountLabel.setText("\(value)")
-            items[selectedIndex] = "\(value) \(oldItem)"
-            items.save()
-        }
+        println("Slider changed \(value)")
+        amountLabel.setText("\(value)")
+        items.setAmount(value, forIndex: selectedIndex)
+        items.save()
     }
 }

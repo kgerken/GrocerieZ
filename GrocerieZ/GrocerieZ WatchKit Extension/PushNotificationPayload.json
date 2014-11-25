@@ -1,6 +1,6 @@
 {
     "aps": {
-        "alert": "Bread added",
+        "alert": "Brot kaufen",
         "title": "Optional title",
         "category": "myCategory"
     },

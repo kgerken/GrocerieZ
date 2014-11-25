@@ -46,7 +46,12 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
         if editingStyle == .Delete {
             items.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            timer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "refresh", userInfo: nil, repeats: true)
         }
+    }
+    
+    override func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+        timer.invalidate()
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -54,6 +59,10 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     // MARK: UITextField delegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        timer.invalidate()
+    }
     
     func textFieldDidEndEditing(textField: UITextField!) {
         items[textField.tag] = textField.text

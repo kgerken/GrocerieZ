@@ -39,7 +39,7 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         NSLog("%@ will activate", self)
-        loadTableData()
+        refresh()
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
 
@@ -52,7 +52,7 @@ class InterfaceController: WKInterfaceController {
     
     private func loadTableData() {
         itemsTable.setNumberOfRows(items.count, withRowType: "groceriezWatchCell")
-        for i in 0...items.count - 1 {
+        for i in 0..<items.count {
             let row = itemsTable.rowControllerAtIndex(i) as GrocerieZRowController
             row.cellLabel.setText(items[i])
         }
