@@ -8,14 +8,20 @@
 
 import WatchKit
 import Foundation
+import GrocerieZKit
 
 
 class GlanceController: WKInterfaceController {
+    
+    @IBOutlet weak var totalItemsLabel: WKInterfaceLabel!
+    
+    let items:GKItems = GKItems()
+    
+    var timer:NSTimer!
 
     override init(context: AnyObject?) {
         // Initialize variables here.
         super.init(context: context)
-        
         // Configure interface objects here.
         NSLog("%@ init", self)
     }
@@ -24,12 +30,20 @@ class GlanceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         NSLog("%@ will activate", self)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         NSLog("%@ did deactivate", self)
+        timer.invalidate()
         super.didDeactivate()
+    }
+    
+    func refresh() {
+        //println("timer refresh")
+        items.refreshItems()
+        totalItemsLabel.setText(String(items.count))
     }
 
 }

@@ -11,10 +11,13 @@ import GrocerieZKit
 
 class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     
+    let timerInterval = 1.0
     let items:GKItems = GKItems()
-
+    var timer:NSTimer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
 
 
@@ -55,6 +58,7 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField!) {
         items[textField.tag] = textField.text
         items.save()
+        timer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -62,9 +66,17 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    func refresh() {
+        //println("timer refresh")
+        items.refreshItems()
+        tableView.reloadData()
+    }
+    
     // MARK: Custom methods
     
     @IBAction func addItem(sender: AnyObject) {
+        timer.invalidate()
         items.add("")
         tableView.reloadData()
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: items.count - 1, inSection: 0)) as GrocerieZTableViewCell

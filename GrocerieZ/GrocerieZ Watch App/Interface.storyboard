@@ -22,7 +22,6 @@
                                                 <color key="color" red="1" green="0.50980392159999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </separator>
                                         </items>
-                                        <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
                                     </group>
                                     <connections>
                                         <outlet property="cellLabel" destination="mL5-o1-ECF" id="s87-V1-2a6"/>
@@ -43,22 +42,42 @@
             <objects>
                 <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="GrocerieZ_Watch_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                        <group alignment="left" layout="vertical" radius="0.0" id="t8f-Gd-c4y">
+                            <items>
+                                <label width="81" alignment="left" text="GrocerieZ" textAlignment="left" id="Qit-JF-aKB"/>
+                                <separator alignment="left" id="dqM-Ge-KPc"/>
+                            </items>
+                        </group>
+                        <group alignment="left" backgroundImage="icon" contentMode="scaleAspectFit" id="uCw-4Q-Ouw">
+                            <items>
+                                <label width="136" alignment="left" verticalAlignment="center" textAlignment="center" id="5rs-cl-EIQ">
+                                    <color key="textColor" red="1" green="0.50980392159999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="25"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="totalItemsLabel" destination="5rs-cl-EIQ" id="Nlp-LJ-VZm"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>
         </scene>
-        <!--Static Notification Interface Controller-->
+        <!--bread-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
-                <notificationController id="YCC-NB-fut">
+                <notificationController backgroundImage="bread" contentMode="top" id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
+                        <group width="1" height="98" alignment="left" id="Agq-gl-pon">
+                            <items>
+                                <label width="136" height="20" alignment="left" verticalAlignment="bottom" text="Label" numberOfLines="10" id="XkS-y5-khE"/>
+                            </items>
+                        </group>
                     </items>
                     <notificationCategory key="notificationCategory" id="JfB-70-Muf"/>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
                         <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
@@ -70,7 +89,7 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="GrocerieZ_Watch_App" customModuleProvider="target"/>
+                <controller contentMode="top" id="gdX-wl-uQE" customClass="NotificationController" customModule="GrocerieZ_Watch_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>

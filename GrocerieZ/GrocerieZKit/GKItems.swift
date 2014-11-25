@@ -22,6 +22,11 @@ public class GKItems {
     }
     
     public init() {
+        refreshItems()
+    }
+    
+    public func refreshItems() {
+        items.removeAll(keepCapacity: false)
         if let defaultsItems = userDefaults.arrayForKey("items")? {
             for defaultItem in defaultsItems {
                 items.append(defaultItem as String)
@@ -44,6 +49,7 @@ public class GKItems {
     
     public func removeAtIndex(index: Int) {
         items.removeAtIndex(index)
+        self.save()
     }
     
     public func save() {

@@ -14,12 +14,13 @@ class InterfaceController: WKInterfaceController {
 
     @IBOutlet weak var itemsTable: WKInterfaceTable!
     
-    var items:GKItems = GKItems()
-    
+    let items:GKItems = GKItems()
+    var timer:NSTimer!
+
     override init(context: AnyObject?) {
         // Initialize variables here.
         super.init(context: context)
-        setTitle("GocerieZ")
+        setTitle("GrocerieZ")
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "appItemsChanged:", name: NSUserDefaultsDidChangeNotification, object: nil)
         //userDefaults.addObserver(self, forKeyPath: "items", options: NSKeyValueObservingOptions.New, context: nil)
         // Configure interface objects here.
@@ -38,13 +39,14 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         NSLog("%@ will activate", self)
-        
         loadTableData()
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         NSLog("%@ did deactivate", self)
+        timer.invalidate()
         super.didDeactivate()
     }
     
@@ -54,6 +56,12 @@ class InterfaceController: WKInterfaceController {
             let row = itemsTable.rowControllerAtIndex(i) as GrocerieZRowController
             row.cellLabel.setText(items[i])
         }
+    }
+    
+    func refresh() {
+        //println("timer refresh")
+        items.refreshItems()
+        loadTableData()
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
