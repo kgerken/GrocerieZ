@@ -64,10 +64,17 @@ class InterfaceController: WKInterfaceController {
         loadTableData()
     }
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        items.removeAtIndex(rowIndex)
-        items.save()
-        loadTableData()
+//    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+//        items.removeAtIndex(rowIndex)
+//        items.save()
+//        loadTableData()
+//    }
+    
+    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+        if segueIdentifier == "presentAmountPicker" {
+            return rowIndex
+        }
+        return nil
     }
 
 }

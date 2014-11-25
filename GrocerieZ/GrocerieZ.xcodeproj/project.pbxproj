@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101D95F11A24F885009BE67D /* AmountInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D95F01A24F885009BE67D /* AmountInterfaceController.swift */; };
 		108B3C911A23877E007CD29A /* GrocerieZRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B3C901A23877E007CD29A /* GrocerieZRowController.swift */; };
 		10A0A0B11A22341E00F3D9F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0A0B01A22341E00F3D9F9 /* AppDelegate.swift */; };
 		10A0A0B61A22341E00F3D9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0A0B41A22341E00F3D9F9 /* Main.storyboard */; };
@@ -103,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		101D95F01A24F885009BE67D /* AmountInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountInterfaceController.swift; sourceTree = "<group>"; };
 		108B3C901A23877E007CD29A /* GrocerieZRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrocerieZRowController.swift; sourceTree = "<group>"; };
 		10A0A0AB1A22341E00F3D9F9 /* GrocerieZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrocerieZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0A0AF1A22341E00F3D9F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				10A0A0EC1A22477000F3D9F9 /* Images.xcassets */,
 				10A0A0E31A22476F00F3D9F9 /* Supporting Files */,
 				108B3C901A23877E007CD29A /* GrocerieZRowController.swift */,
+				101D95F01A24F885009BE67D /* AmountInterfaceController.swift */,
 			);
 			path = "GrocerieZ WatchKit Extension";
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				10A0A0E91A22477000F3D9F9 /* NotificationController.swift in Sources */,
 				108B3C911A23877E007CD29A /* GrocerieZRowController.swift in Sources */,
 				10A0A0E71A22477000F3D9F9 /* InterfaceController.swift in Sources */,
+				101D95F11A24F885009BE67D /* AmountInterfaceController.swift in Sources */,
 				10A0A0EB1A22477000F3D9F9 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
