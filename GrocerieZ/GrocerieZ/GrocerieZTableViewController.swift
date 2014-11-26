@@ -14,6 +14,7 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     let timerInterval = 1.0
     let items:GKItems = GKItems()
     var timer:NSTimer!
+    var addMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("groceriezCell", forIndexPath: indexPath) as GrocerieZTableViewCell
         cell.textField.text = items[indexPath.row]
         cell.textField.tag = indexPath.row
+        if (addMode && items.count > 0 && indexPath.row == items.count-1) {
+            cell.textField.becomeFirstResponder()
+            addMode = false
+        }
         return cell
     }
 
@@ -87,8 +92,7 @@ class GrocerieZTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func addItem(sender: AnyObject) {
         timer.invalidate()
         items.add("")
+        addMode = true
         tableView.reloadData()
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: items.count - 1, inSection: 0)) as GrocerieZTableViewCell
-        cell.textField.becomeFirstResponder()
     }
 }
