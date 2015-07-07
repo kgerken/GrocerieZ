@@ -25,6 +25,7 @@ class ShoppingListAdapter(private val context: Context, public val items: Mutabl
         var view: CheckedTextView = (convertView as CheckedTextView?) ?: context.layoutInflater.inflate(android.R.layout.simple_selectable_list_item, null) as CheckedTextView
         view.setText(if (position < items.size()) items.get(position).title else addItemString)
         view.setChecked(if (position < items.size()) items.get(position).checked else false)
+        view.setHeight(100)
         return view
     }
 

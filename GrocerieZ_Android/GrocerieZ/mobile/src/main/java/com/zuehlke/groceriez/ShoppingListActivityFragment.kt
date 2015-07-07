@@ -30,8 +30,9 @@ import java.util.*
  */
 public class ShoppingListActivityFragment : Fragment() {
 
+    private var itemList: MutableList<ShoppingItem>? = null
     private var listView: ListView? = null
-    private var mAdapter: ShoppingListAdapter? = null
+    private var listAdapter: ShoppingListAdapter? = null
 
     // These are the Contacts rows that we will retrieve
     private val PROJECTION = arrayOf(BaseColumns._ID, "display_name");
@@ -49,9 +50,14 @@ public class ShoppingListActivityFragment : Fragment() {
 
         listView?.onItemClick { parentView, clickedView, index, id ->
             println("--- Selected item $index (id $id)")
-            var checkedView = clickedView as CheckedTextView?
-            checkedView?.setChecked(!checkedView.isChecked())
-            checkedView?.backgroundColor = if (checkedView?.isChecked() ?: false) Color.LTGRAY else Color.WHITE
+            if (index == itemList?.size()) {
+                itemList?.add(ShoppingItem(index, "Item $index", false))
+                listAdapter?.notifyDataSetChanged()
+            } else {
+                var checkedView = clickedView as CheckedTextView?
+                checkedView?.setChecked(!checkedView.isChecked())
+                checkedView?.backgroundColor = if (checkedView?.isChecked() ?: false) Color.LTGRAY else Color.WHITE
+            }
         }
 
         var progressBar = ProgressBar(getActivity())
@@ -60,9 +66,9 @@ public class ShoppingListActivityFragment : Fragment() {
         progressBar.setIndeterminate(true)
         listView?.setEmptyView(progressBar)
 
-        val itemList = assembleList()
-        mAdapter = ShoppingListAdapter(getActivity(), itemList)
-        listView?.setAdapter(mAdapter)
+        itemList = assembleList()
+        listAdapter = ShoppingListAdapter(getActivity(), itemList!!)
+        listView?.setAdapter(listAdapter)
     }
 
     private fun assembleList(): MutableList<ShoppingItem> {
