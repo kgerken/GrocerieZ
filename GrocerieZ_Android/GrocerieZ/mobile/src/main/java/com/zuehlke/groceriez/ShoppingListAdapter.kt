@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckedTextView
 import android.widget.SimpleAdapter
+import com.zuehlke.groceryshared.ShoppingItem
 import org.jetbrains.anko.layoutInflater
 import java.util.*
 

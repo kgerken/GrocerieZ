@@ -17,20 +17,25 @@ import android.widget.CheckedTextView
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.SimpleCursorAdapter
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.internal.GamesContract
-import org.jetbrains.anko.backgroundColor
-import org.jetbrains.anko.find
-import org.jetbrains.anko.onItemClick
-import org.jetbrains.anko.onItemSelectedListener
+import com.google.android.gms.wearable.*
+import com.zuehlke.groceryshared.SHOPPING_LIST_DATA_PATH
+import com.zuehlke.groceryshared.ShoppingItem
+import org.jetbrains.anko.*
 import java.util.*
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ShoppingListActivityFragment : Fragment() {
+public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        AnkoLogger {
 
-    private var itemList: MutableList<ShoppingItem>? = null
+    private var itemList: MutableList<ShoppingItem> = ArrayList<ShoppingItem>()
     private var listView: ListView? = null
     private var listAdapter: ShoppingListAdapter? = null
 
@@ -48,18 +53,26 @@ public class ShoppingListActivityFragment : Fragment() {
         super<Fragment>.onActivityCreated(savedInstanceState)
         listView = find(R.id.shoppingList)
 
+        setupListClickListener()
+        setupListData()
+        setupGoogleApiConnection()
+    }
+
+    private fun setupListClickListener() {
         listView?.onItemClick { parentView, clickedView, index, id ->
-            println("--- Selected item $index (id $id)")
-            if (index == itemList?.size()) {
-                itemList?.add(ShoppingItem(index, "Item $index", false))
+            if (index == itemList.size()) {
+                itemList.add(ShoppingItem(index, "Item $index", false))
                 listAdapter?.notifyDataSetChanged()
             } else {
                 var checkedView = clickedView as CheckedTextView?
                 checkedView?.setChecked(!checkedView.isChecked())
                 checkedView?.backgroundColor = if (checkedView?.isChecked() ?: false) Color.LTGRAY else Color.WHITE
             }
+            sendListToWearable()
         }
+    }
 
+    private fun setupListData() {
         var progressBar = ProgressBar(getActivity())
         progressBar.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT))
@@ -78,4 +91,56 @@ public class ShoppingListActivityFragment : Fragment() {
         list.add(ShoppingItem(3, "Brot", false))
         return list
     }
+
+    // Data API
+
+    private var googleApiClient: GoogleApiClient? = null
+
+    private fun setupGoogleApiConnection() {
+        googleApiClient = GoogleApiClient.Builder(getActivity())
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+    }
+
+    private fun sendListToWearable() {
+        var putDataMapReq = PutDataMapRequest.create(SHOPPING_LIST_DATA_PATH)
+
+        for (shoppingListEntry in itemList ?: emptyList<ShoppingItem>()) {
+            var key: String = shoppingListEntry.id.toString()
+            var datamap: DataMap = shoppingListEntry.toDataMap();
+            putDataMapReq.getDataMap().putDataMap(key, datamap);
+        }
+        var putDataReq: PutDataRequest = putDataMapReq.asPutDataRequest();
+        var pendingResult = Wearable.DataApi.putDataItem(googleApiClient, putDataReq);
+        println("--- Sending data item")
+        pendingResult.setResultCallback({ it ->
+            if (it.getStatus().isSuccess()) {
+                println("--- Sent data successfully")
+            }
+        })
+    }
+
+    override fun onDataChanged(buffer: DataEventBuffer?) {
+        buffer?.forEachIndexed { index, dataEvent ->
+            dataEvent.getDataItem().getData() // TODO: Something
+        }
+    }
+
+    override fun onConnected(bundle: Bundle?) {
+        info("--- API connection established")
+    }
+
+    override fun onConnectionSuspended(p0: Int) {
+        info("--- API connection suspended")
+    }
+
+    override fun onConnectionFailed(result: ConnectionResult?) {
+        info("--- API connection failed: $result")
+        if (result?.getErrorCode() == ConnectionResult.API_UNAVAILABLE) {
+            info("--- Wearable API is unavailable")
+        }
+    }
+
 }

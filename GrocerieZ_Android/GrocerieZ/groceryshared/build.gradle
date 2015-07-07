@@ -30,6 +30,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:+'
     compile "org.jetbrains.kotlin:kotlin-stdlib:0.12.613"
     compile 'org.jetbrains.anko:anko:0.6.2-15'
 }
