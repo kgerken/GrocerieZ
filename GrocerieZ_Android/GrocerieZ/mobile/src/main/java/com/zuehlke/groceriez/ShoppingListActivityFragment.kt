@@ -40,6 +40,8 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     private var listView: ListView? = null
     private var listAdapter: ShoppingListAdapter? = null
     private var inputDialog: AlertDialog? = null
+    private var deleteDialog: AlertDialog? = null
+    private var longClickedIndex: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.f_shopping_list, container, false)
@@ -49,6 +51,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         super<Fragment>.onActivityCreated(savedInstanceState)
         listView = find(R.id.shoppingList)
         createInputDialog()
+        createDeleteDialog()
         setupListClickListener()
         setupListData()
         setupGoogleApiConnection()
@@ -57,18 +60,24 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     private fun setupListClickListener() {
         listView?.onItemClick { parentView, clickedView, index, id ->
             if (index == itemList.size()) {
-                addNewListItem()
+                inputDialog?.show()
             } else {
                 println("--- Setting item $index checked: ${!itemList[index].checked}")
                 itemList[index].checked = !itemList[index].checked
                 listAdapter?.notifyDataSetChanged()
+                sendListToWearable()
             }
-            sendListToWearable()
         }
-    }
-
-    private fun addNewListItem() {
-        inputDialog?.show()
+        listView?.onItemLongClick { parentView, clickedView, index, id ->
+            if (index == itemList.size()) {
+                false
+            } else {
+                longClickedIndex = index
+                deleteDialog?.setTitle("Delete ${itemList[index].title}?")
+                deleteDialog?.show()
+                true
+            }
+        }
     }
 
     private fun createInputDialog() {
@@ -82,11 +91,25 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
             itemList.add(ShoppingItem(maxIndex + 1, titleInput?.text?.toString() ?: "item $maxIndex", false))
             listAdapter?.notifyDataSetChanged()
             titleInput?.text = ""
+            sendListToWearable()
         })
         builder.setNegativeButton(android.R.string.cancel, { dialog, id ->
             titleInput?.text = ""
         })
         inputDialog = builder.create()
+    }
+
+    private fun createDeleteDialog() {
+        var builder = AlertDialog.Builder(getActivity())
+        builder.setTitle("Delete?")
+        builder.setPositiveButton("Delete", { dialog, id ->
+            itemList.remove(longClickedIndex)
+            listAdapter?.notifyDataSetChanged()
+            sendListToWearable()
+        })
+        builder.setNegativeButton("Keep", { dialog, id ->
+        })
+        deleteDialog = builder.create()
     }
 
     private fun setupListData() {
