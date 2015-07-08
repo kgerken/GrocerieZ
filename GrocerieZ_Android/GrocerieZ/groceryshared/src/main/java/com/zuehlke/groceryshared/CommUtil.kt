@@ -9,7 +9,6 @@ import java.util.*
 object CommUtil {
     public fun updateItemListFromDataEventBuffer(itemList: MutableList<ShoppingItem>, buffer: DataEventBuffer?, updatedCallback: () -> Unit) {
         buffer?.forEachIndexed { index, dataEvent ->
-            println("--- Data changed: $dataEvent")
             if (dataEvent.getType() == DataEvent.TYPE_CHANGED) {
                 var item = dataEvent.getDataItem()
                 if (item.getUri().getPath().compareTo(SHOPPING_LIST_DATA_PATH) == 0) {
@@ -24,7 +23,8 @@ object CommUtil {
             itemList.clear()
             var dataMap = DataMapItem.fromDataItem(item).getDataMap()
             dataMap.keySet().sort().forEach { key ->
-                itemList.add(ShoppingItem(dataMap[key]))
+                var shoppingItem = ShoppingItem(dataMap[key])
+                itemList.add(shoppingItem)
             }
             updatedCallback()
         }

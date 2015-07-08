@@ -91,13 +91,14 @@ public class WearableShoppingListActivity : Activity(),
     // DataListener
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
-        async {
-            CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
-                uiThread {
-                    listAdapter?.notifyDataSetChanged()
-                }
-            })
-        }
+        val listCopy = ArrayList<ShoppingItem>(itemList)
+        CommUtil.updateItemListFromDataEventBuffer(listCopy, buffer, {
+            uiThread {
+                itemList.clear()
+                itemList.addAll(listCopy)
+                listAdapter?.notifyDataSetChanged()
+            }
+        })
     }
 
     // ConnectionCallbacks
@@ -105,9 +106,12 @@ public class WearableShoppingListActivity : Activity(),
     override fun onConnected(bundle: Bundle?) {
         info("--- API connection established")
         Wearable.DataApi.addListener(googleApiClient, this);
+        val listCopy = ArrayList<ShoppingItem>(itemList)
         async {
-            CommUtil.updateListFromRemote(itemList, googleApiClient, {
+            CommUtil.updateListFromRemote(listCopy, googleApiClient, {
                 uiThread {
+                    itemList.clear()
+                    itemList.addAll(listCopy)
                     listAdapter?.notifyDataSetChanged()
                 }
             })

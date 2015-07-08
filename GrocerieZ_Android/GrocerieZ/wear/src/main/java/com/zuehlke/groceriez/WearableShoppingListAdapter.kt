@@ -27,7 +27,7 @@ public class WearableShoppingListAdapter(private val context: Context, private v
     override fun onBindViewHolder(holder: WearableListView.ViewHolder, position: Int) {
         val itemHolder = holder as ItemViewHolder
         itemHolder.textView.setText(items[position].title)
-        itemHolder.checkmarkView.setImageResource(if (items[position].checked) android.R.drawable.checkbox_off_background else android.R.drawable.checkbox_on_background)
+        itemHolder.checkmarkView.setImageResource(if (items[position].checked) android.R.drawable.checkbox_on_background else android.R.drawable.checkbox_off_background)
         holder.itemView.setTag(items[position].id)
     }
 
