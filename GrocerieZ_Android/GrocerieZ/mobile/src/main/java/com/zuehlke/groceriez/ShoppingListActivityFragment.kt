@@ -7,6 +7,7 @@ import android.content.Loader
 import android.database.Cursor
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.provider.BaseColumns
 import android.provider.ContactsContract
 import android.view.Gravity
@@ -23,6 +24,7 @@ import com.google.android.gms.games.internal.GamesContract
 import com.google.android.gms.wearable.*
 import com.zuehlke.groceryshared.SHOPPING_LIST_DATA_PATH
 import com.zuehlke.groceryshared.ShoppingItem
+import com.zuehlke.groceryshared.CommUtil
 import org.jetbrains.anko.*
 import java.util.*
 
@@ -38,12 +40,6 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     private var itemList: MutableList<ShoppingItem> = ArrayList<ShoppingItem>()
     private var listView: ListView? = null
     private var listAdapter: ShoppingListAdapter? = null
-
-    // These are the Contacts rows that we will retrieve
-    private val PROJECTION = arrayOf(BaseColumns._ID, "display_name");
-
-    // This is the select criteria
-    private val SELECTION = "((display_name NOTNULL) AND (display_name != '' ))";
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.f_shopping_list, container, false)
@@ -80,16 +76,27 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         listView?.setEmptyView(progressBar)
 
         itemList = assembleList()
-        listAdapter = ShoppingListAdapter(getActivity(), itemList!!)
+        listAdapter = ShoppingListAdapter(getActivity(), itemList)
         listView?.setAdapter(listAdapter)
     }
 
     private fun assembleList(): MutableList<ShoppingItem> {
         var list = ArrayList<ShoppingItem>()
-        list.add(ShoppingItem(1, "Worscht", true))
-        list.add(ShoppingItem(2, "Käs", false))
-        list.add(ShoppingItem(3, "Brot", false))
+//        list.add(ShoppingItem(1, "Worscht", true))
+//        list.add(ShoppingItem(2, "Käs", false))
+//        list.add(ShoppingItem(3, "Brot", false))
         return list
+    }
+
+    override fun onResume() {
+        super<Fragment>.onResume()
+        googleApiClient?.connect()
+    }
+
+    override fun onPause() {
+        super<Fragment>.onPause()
+        Wearable.DataApi.removeListener(googleApiClient, this)
+        googleApiClient?.disconnect()
     }
 
     // Data API
@@ -101,40 +108,40 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
-                .build();
+                .build()
     }
 
     private fun sendListToWearable() {
-        var putDataMapReq = PutDataMapRequest.create(SHOPPING_LIST_DATA_PATH)
+        CommUtil.sendItemListViaApiClient(itemList, googleApiClient)
+    }
 
-        for (shoppingListEntry in itemList ?: emptyList<ShoppingItem>()) {
-            var key: String = shoppingListEntry.id.toString()
-            var datamap: DataMap = shoppingListEntry.toDataMap();
-            putDataMapReq.getDataMap().putDataMap(key, datamap);
-        }
-        var putDataReq: PutDataRequest = putDataMapReq.asPutDataRequest();
-        var pendingResult = Wearable.DataApi.putDataItem(googleApiClient, putDataReq);
-        println("--- Sending data item")
-        pendingResult.setResultCallback({ it ->
-            if (it.getStatus().isSuccess()) {
-                println("--- Sent data successfully")
-            }
+    // DataListener
+
+    override fun onDataChanged(buffer: DataEventBuffer?) {
+        CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
+            runOnMainThread(Runnable {
+                listAdapter?.notifyDataSetChanged()
+            })
         })
     }
 
-    override fun onDataChanged(buffer: DataEventBuffer?) {
-        buffer?.forEachIndexed { index, dataEvent ->
-            dataEvent.getDataItem().getData() // TODO: Something
-        }
+    private fun runOnMainThread(runnable: Runnable): Boolean {
+        var mainHandler = Handler(getActivity().getMainLooper())
+        return mainHandler.post(runnable)
     }
+
+    // ConnectionCallbacks
 
     override fun onConnected(bundle: Bundle?) {
         info("--- API connection established")
+        Wearable.DataApi.addListener(googleApiClient, this);
     }
 
     override fun onConnectionSuspended(p0: Int) {
         info("--- API connection suspended")
     }
+
+    // ConnectionFailedListener
 
     override fun onConnectionFailed(result: ConnectionResult?) {
         info("--- API connection failed: $result")
