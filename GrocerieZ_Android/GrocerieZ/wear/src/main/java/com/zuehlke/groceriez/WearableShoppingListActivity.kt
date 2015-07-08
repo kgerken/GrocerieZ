@@ -1,6 +1,7 @@
 package com.zuehlke.groceriez
 
 import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.support.wearable.view.WatchViewStub
@@ -13,10 +14,10 @@ import com.google.android.gms.wearable.DataApi
 import com.google.android.gms.wearable.DataEventBuffer
 import com.google.android.gms.wearable.Wearable
 import com.zuehlke.groceryshared.CommUtil
+import com.zuehlke.groceryshared.SHOPPING_LIST_DATA_PATH
 import com.zuehlke.groceryshared.ShoppingItem
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.find
-import org.jetbrains.anko.onClick
+import org.jetbrains.anko.*
+import java.net.URL
 import java.util.*
 
 public class WearableShoppingListActivity : Activity(),
@@ -47,9 +48,6 @@ public class WearableShoppingListActivity : Activity(),
 
     private fun assembleList() {
         itemList = ArrayList<ShoppingItem>()
-//        itemList.add(ShoppingItem(1, "Worscht", true))
-//        itemList.add(ShoppingItem(2, "Käs", false))
-//        itemList.add(ShoppingItem(3, "Brot", false))
     }
 
     override fun onClick(viewHolder: WearableListView.ViewHolder?) {
@@ -58,7 +56,9 @@ public class WearableShoppingListActivity : Activity(),
             var item = itemList.filter{ item -> item.id == itemId }.firstOrNull()
             item?.checked = !(item?.checked ?: true)
             listAdapter?.notifyDataSetChanged()
-            CommUtil.sendItemListViaApiClient(itemList, googleApiClient)
+            async {
+                CommUtil.sendItemListViaApiClient(itemList, googleApiClient)
+            }
         }
     }
 
@@ -91,16 +91,13 @@ public class WearableShoppingListActivity : Activity(),
     // DataListener
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
-        CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
-            runOnMainThread(Runnable {
-                listAdapter?.notifyDataSetChanged()
+        async {
+            CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
+                uiThread {
+                    listAdapter?.notifyDataSetChanged()
+                }
             })
-        })
-    }
-
-    private fun runOnMainThread(runnable: Runnable): Boolean {
-        var mainHandler = Handler(getMainLooper())
-        return mainHandler.post(runnable)
+        }
     }
 
     // ConnectionCallbacks
@@ -108,6 +105,13 @@ public class WearableShoppingListActivity : Activity(),
     override fun onConnected(bundle: Bundle?) {
         info("--- API connection established")
         Wearable.DataApi.addListener(googleApiClient, this);
+        async {
+            CommUtil.updateListFromRemote(itemList, googleApiClient, {
+                uiThread {
+                    listAdapter?.notifyDataSetChanged()
+                }
+            })
+        }
     }
 
     override fun onConnectionSuspended(p0: Int) {
