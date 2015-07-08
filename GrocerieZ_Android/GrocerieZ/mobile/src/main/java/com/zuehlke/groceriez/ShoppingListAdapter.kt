@@ -1,12 +1,12 @@
 package com.zuehlke.groceriez
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.CheckedTextView
-import android.widget.SimpleAdapter
+import android.widget.*
 import com.zuehlke.groceryshared.ShoppingItem
+import org.jetbrains.anko.find
 import org.jetbrains.anko.layoutInflater
 import java.util.*
 
@@ -23,10 +23,15 @@ class ShoppingListAdapter(private val context: Context, public val items: Mutabl
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-        var view: CheckedTextView = (convertView as CheckedTextView?) ?: context.layoutInflater.inflate(android.R.layout.simple_selectable_list_item, null) as CheckedTextView
-        view.setText(if (position < items.size()) items.get(position).title else addItemString)
-        view.setChecked(if (position < items.size()) items.get(position).checked else false)
-        view.setHeight(100)
+        var view: View = convertView ?: context.layoutInflater.inflate(R.layout.list_item, null)
+        var iconView: ImageView = view.find(R.id.checkmark)
+        var titleView: TextView = view.find(R.id.name)
+        var checked = if (position < items.size()) items.get(position).checked else false
+        var checkmarkResource = if (checked) android.R.drawable.checkbox_on_background else android.R.drawable.checkbox_off_background
+        iconView.setImageResource(checkmarkResource)
+        iconView.setVisibility(if (position < items.size()) View.VISIBLE else View.INVISIBLE)
+        titleView.setText(if (position < items.size()) items.get(position).title else addItemString)
+        println("--- Set view $position checked: $checked")
         return view
     }
 

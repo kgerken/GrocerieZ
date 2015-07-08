@@ -60,9 +60,9 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
                 itemList.add(ShoppingItem(index, "Item $index", false))
                 listAdapter?.notifyDataSetChanged()
             } else {
-                var checkedView = clickedView as CheckedTextView?
-                checkedView?.setChecked(!checkedView.isChecked())
-                checkedView?.backgroundColor = if (checkedView?.isChecked() ?: false) Color.LTGRAY else Color.WHITE
+                println("--- Setting item $index checked: ${!itemList[index].checked}")
+                itemList[index].checked = !itemList[index].checked
+                listAdapter?.notifyDataSetChanged()
             }
             sendListToWearable()
         }
@@ -81,11 +81,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     }
 
     private fun assembleList(): MutableList<ShoppingItem> {
-        var list = ArrayList<ShoppingItem>()
-//        list.add(ShoppingItem(1, "Worscht", true))
-//        list.add(ShoppingItem(2, "Käs", false))
-//        list.add(ShoppingItem(3, "Brot", false))
-        return list
+        return ArrayList<ShoppingItem>()
     }
 
     override fun onResume() {
@@ -112,22 +108,21 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     }
 
     private fun sendListToWearable() {
-        CommUtil.sendItemListViaApiClient(itemList, googleApiClient)
+        async {
+            CommUtil.sendItemListViaApiClient(itemList, googleApiClient)
+        }
     }
 
     // DataListener
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
-        CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
-            runOnMainThread(Runnable {
-                listAdapter?.notifyDataSetChanged()
+        async {
+            CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
+                uiThread {
+                    listAdapter?.notifyDataSetChanged()
+                }
             })
-        })
-    }
-
-    private fun runOnMainThread(runnable: Runnable): Boolean {
-        var mainHandler = Handler(getActivity().getMainLooper())
-        return mainHandler.post(runnable)
+        }
     }
 
     // ConnectionCallbacks
