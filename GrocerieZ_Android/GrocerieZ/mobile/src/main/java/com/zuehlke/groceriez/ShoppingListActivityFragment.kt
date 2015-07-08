@@ -1,8 +1,10 @@
 package com.zuehlke.groceriez
 
+import android.app.AlertDialog
 import android.app.Fragment
 import android.app.LoaderManager
 import android.content.CursorLoader
+import android.content.DialogInterface
 import android.content.Loader
 import android.database.Cursor
 import android.graphics.Color
@@ -14,10 +16,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckedTextView
-import android.widget.ListView
-import android.widget.ProgressBar
-import android.widget.SimpleCursorAdapter
+import android.widget.*
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.internal.GamesContract
@@ -40,6 +39,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     private var itemList: MutableList<ShoppingItem> = ArrayList<ShoppingItem>()
     private var listView: ListView? = null
     private var listAdapter: ShoppingListAdapter? = null
+    private var inputDialog: AlertDialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.f_shopping_list, container, false)
@@ -48,7 +48,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super<Fragment>.onActivityCreated(savedInstanceState)
         listView = find(R.id.shoppingList)
-
+        createInputDialog()
         setupListClickListener()
         setupListData()
         setupGoogleApiConnection()
@@ -57,8 +57,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     private fun setupListClickListener() {
         listView?.onItemClick { parentView, clickedView, index, id ->
             if (index == itemList.size()) {
-                itemList.add(ShoppingItem(index, "Item $index", false))
-                listAdapter?.notifyDataSetChanged()
+                addNewListItem()
             } else {
                 println("--- Setting item $index checked: ${!itemList[index].checked}")
                 itemList[index].checked = !itemList[index].checked
@@ -66,6 +65,28 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
             }
             sendListToWearable()
         }
+    }
+
+    private fun addNewListItem() {
+        inputDialog?.show()
+    }
+
+    private fun createInputDialog() {
+        var builder = AlertDialog.Builder(getActivity())
+        builder.setTitle("Add new item")
+        var inputSection = getActivity().layoutInflater.inflate(R.layout.dialog_input, null)
+        builder.setView(inputSection)
+        val titleInput: EditText? = inputSection.find(R.id.itemEntry)
+        builder.setPositiveButton(android.R.string.ok, { dialog, id ->
+            var maxIndex = itemList.fold(0, { max: Int, item: ShoppingItem -> Math.max(max, item.id) })
+            itemList.add(ShoppingItem(maxIndex + 1, titleInput?.text?.toString() ?: "item $maxIndex", false))
+            listAdapter?.notifyDataSetChanged()
+            titleInput?.text = ""
+        })
+        builder.setNegativeButton(android.R.string.cancel, { dialog, id ->
+            titleInput?.text = ""
+        })
+        inputDialog = builder.create()
     }
 
     private fun setupListData() {
