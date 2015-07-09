@@ -21,6 +21,8 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.internal.GamesContract
 import com.google.android.gms.wearable.*
+import com.zuehlke.groceriez.data.ListStorage
+import com.zuehlke.groceriez.data.database
 import com.zuehlke.groceryshared.SHOPPING_LIST_DATA_PATH
 import com.zuehlke.groceryshared.ShoppingItem
 import com.zuehlke.groceryshared.CommUtil
@@ -49,11 +51,14 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super<Fragment>.onActivityCreated(savedInstanceState)
+        async {
+            database
+        }
         listView = find(R.id.shoppingList)
         createInputDialog()
         createDeleteDialog()
         setupListClickListener()
-        setupListData()
+        configureListView()
         setupGoogleApiConnection()
     }
 
@@ -62,9 +67,13 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
             if (index == itemList.size()) {
                 inputDialog?.show()
             } else {
-                println("--- Setting item $index checked: ${!itemList[index].checked}")
-                itemList[index].checked = !itemList[index].checked
+                var item = itemList[index]
+                println("--- Setting item $index checked: ${!item.checked}")
+                item.checked = !item.checked
                 listAdapter?.notifyDataSetChanged()
+                async {
+                    database.updateItemState(item)
+                }
                 sendListToWearable()
             }
         }
@@ -87,10 +96,15 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         builder.setView(inputSection)
         val titleInput: EditText? = inputSection.find(R.id.itemEntry)
         builder.setPositiveButton(android.R.string.ok, { dialog, id ->
+            // FIXME: "Ok" sometimes removes items instead of adding? WTF???
             var maxIndex = itemList.fold(0, { max: Int, item: ShoppingItem -> Math.max(max, item.id) })
-            itemList.add(ShoppingItem(maxIndex + 1, titleInput?.text?.toString() ?: "item $maxIndex", false))
+            var item = ShoppingItem(maxIndex + 1, titleInput?.text?.toString() ?: "item $maxIndex", false)
+            itemList.add(item)
             listAdapter?.notifyDataSetChanged()
             titleInput?.text = ""
+            async {
+                database.addListItem(item)
+            }
             sendListToWearable()
         })
         builder.setNegativeButton(android.R.string.cancel, { dialog, id ->
@@ -103,8 +117,11 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         var builder = AlertDialog.Builder(getActivity())
         builder.setTitle("Delete?")
         builder.setPositiveButton("Delete", { dialog, id ->
-            itemList.remove(longClickedIndex)
+            var item = itemList.remove(longClickedIndex)
             listAdapter?.notifyDataSetChanged()
+            async {
+                database.deleteListItem(item)
+            }
             sendListToWearable()
         })
         builder.setNegativeButton("Keep", { dialog, id ->
@@ -112,20 +129,31 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         deleteDialog = builder.create()
     }
 
-    private fun setupListData() {
+    private fun configureListView() {
         var progressBar = ProgressBar(getActivity())
         progressBar.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT))
         progressBar.setIndeterminate(true)
         listView?.setEmptyView(progressBar)
 
-        itemList = assembleList()
+        itemList = ArrayList<ShoppingItem>()
         listAdapter = ShoppingListAdapter(getActivity(), itemList)
         listView?.setAdapter(listAdapter)
+
+        loadShoppingList()
     }
 
-    private fun assembleList(): MutableList<ShoppingItem> {
-        return ArrayList<ShoppingItem>()
+    private fun loadShoppingList() {
+        async {
+            Thread.sleep(500)
+            println("--- Loading list")
+            var shoppingList = database.getShoppingList()
+            itemList.clear()
+            itemList.addAll(shoppingList)
+            uiThread {
+                listAdapter?.notifyDataSetChanged()
+            }
+        }
     }
 
     override fun onResume() {
@@ -162,6 +190,7 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     override fun onDataChanged(buffer: DataEventBuffer?) {
         async {
             CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
+                // TODO: Update all items
                 uiThread {
                     listAdapter?.notifyDataSetChanged()
                 }
