@@ -30,9 +30,6 @@ import org.jetbrains.anko.*
 import java.util.*
 
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -68,7 +65,6 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
                 inputDialog?.show()
             } else {
                 var item = itemList[index]
-                println("--- Setting item $index checked: ${!item.checked}")
                 item.checked = !item.checked
                 listAdapter?.notifyDataSetChanged()
                 async {
@@ -145,8 +141,6 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
 
     private fun loadShoppingList() {
         async {
-            Thread.sleep(500)
-            println("--- Loading list")
             var shoppingList = database.getShoppingList()
             itemList.clear()
             itemList.addAll(shoppingList)
@@ -188,9 +182,11 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     // DataListener
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
+        println("--- Got data update from remote")
         async {
             CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
-                // TODO: Update all items
+                println("--- Update processed")
+                itemList.forEach { item -> database.updateItemState(item) }
                 uiThread {
                     listAdapter?.notifyDataSetChanged()
                 }

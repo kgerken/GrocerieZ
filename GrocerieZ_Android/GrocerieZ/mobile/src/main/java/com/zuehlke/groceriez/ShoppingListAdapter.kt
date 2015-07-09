@@ -31,7 +31,6 @@ class ShoppingListAdapter(private val context: Context, public val items: Mutabl
         iconView.setImageResource(checkmarkResource)
         iconView.setVisibility(if (position < items.size()) View.VISIBLE else View.INVISIBLE)
         titleView.setText(if (position < items.size()) items.get(position).title else addItemString)
-        println("--- Set view $position checked: $checked")
         return view
     }
 
