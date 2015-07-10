@@ -182,15 +182,15 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     // DataListener
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
-        println("--- Got data update from remote")
-        async {
-            CommUtil.updateItemListFromDataEventBuffer(itemList, buffer, {
-                println("--- Update processed")
+        try {
+            CommUtil.updateItemListFromDataEventBuffer(itemList, buffer) {
                 itemList.forEach { item -> database.updateItemState(item) }
                 uiThread {
                     listAdapter?.notifyDataSetChanged()
                 }
-            })
+            }
+        } catch (exception: Exception) {
+            println("--- SOMEBODY SET UP US THE BOMB: $exception")
         }
     }
 
@@ -208,9 +208,9 @@ public class ShoppingListActivityFragment : Fragment(), DataApi.DataListener,
     // ConnectionFailedListener
 
     override fun onConnectionFailed(result: ConnectionResult?) {
-        info("--- API connection failed: $result")
+        error("--- API connection failed: $result")
         if (result?.getErrorCode() == ConnectionResult.API_UNAVAILABLE) {
-            info("--- Wearable API is unavailable")
+            error("--- Wearable API is unavailable")
         }
     }
 

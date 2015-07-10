@@ -92,13 +92,13 @@ public class WearableShoppingListActivity : Activity(),
 
     override fun onDataChanged(buffer: DataEventBuffer?) {
         val listCopy = ArrayList<ShoppingItem>(itemList)
-        CommUtil.updateItemListFromDataEventBuffer(listCopy, buffer, {
+        CommUtil.updateItemListFromDataEventBuffer(listCopy, buffer) {
             uiThread {
                 itemList.clear()
                 itemList.addAll(listCopy)
                 listAdapter?.notifyDataSetChanged()
             }
-        })
+        }
     }
 
     // ConnectionCallbacks
@@ -125,9 +125,9 @@ public class WearableShoppingListActivity : Activity(),
     // ConnectionFailedListener
 
     override fun onConnectionFailed(result: ConnectionResult?) {
-        info("--- API connection failed: $result")
+        error("--- API connection failed: $result")
         if (result?.getErrorCode() == ConnectionResult.API_UNAVAILABLE) {
-            info("--- Wearable API is unavailable")
+            error("--- Wearable API is unavailable")
         }
     }
 }

@@ -3,10 +3,11 @@ package com.zuehlke.groceryshared
 import android.net.Uri
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.wearable.*
+import org.jetbrains.anko.AnkoLogger
 import java.util
 import java.util.*
 
-object CommUtil {
+object CommUtil: AnkoLogger {
     public fun updateItemListFromDataEventBuffer(itemList: MutableList<ShoppingItem>, buffer: DataEventBuffer?, updatedCallback: () -> Unit) {
         buffer?.forEachIndexed { index, dataEvent ->
             if (dataEvent.getType() == DataEvent.TYPE_CHANGED) {
@@ -18,16 +19,14 @@ object CommUtil {
         }
     }
 
-    public fun updateItemListFromDataItem(item: DataItem?, itemList: MutableList<ShoppingItem>, updatedCallback: () -> Unit) {
-        if (item != null) {
-            itemList.clear()
-            var dataMap = DataMapItem.fromDataItem(item).getDataMap()
-            dataMap.keySet().sort().forEach { key ->
-                var shoppingItem = ShoppingItem(dataMap[key])
-                itemList.add(shoppingItem)
-            }
-            updatedCallback()
+    private fun updateItemListFromDataItem(dataItem: DataItem, itemList: MutableList<ShoppingItem>, updatedCallback: () -> Unit) {
+        itemList.clear()
+        var dataMap = DataMapItem.fromDataItem(dataItem).getDataMap()
+        dataMap.keySet().sort().forEach { key ->
+            var shoppingItem = ShoppingItem(dataMap[key])
+            itemList.add(shoppingItem)
         }
+        updatedCallback()
     }
 
     public fun sendItemListViaApiClient(itemList: MutableList<ShoppingItem>, googleApiClient: GoogleApiClient?) {
@@ -40,10 +39,9 @@ object CommUtil {
         }
         var putDataReq: PutDataRequest = putDataMapReq.asPutDataRequest()
         var pendingResult = Wearable.DataApi.putDataItem(googleApiClient, putDataReq)
-        println("--- Sending data item")
         pendingResult.setResultCallback({ it ->
             if (it.getStatus().isSuccess()) {
-                println("--- Sent data successfully")
+                debug("--- Sent data successfully")
             }
         })
     }
@@ -57,7 +55,6 @@ object CommUtil {
         }
     }
 
-    // TODO: Use this to properly query the current data item state
     private fun getUriForRemoteShoppingList(googleApiClient: GoogleApiClient): Uri {
         var nodeId = getRemoteNodeId(googleApiClient)
         return Uri.Builder().scheme(PutDataRequest.WEAR_URI_SCHEME).authority(nodeId).path(SHOPPING_LIST_DATA_PATH).build()
