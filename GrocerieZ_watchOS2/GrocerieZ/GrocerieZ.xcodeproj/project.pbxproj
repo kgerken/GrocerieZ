@@ -1,0 +1,780 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10109C5B1C0EE18300BCB9D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C5A1C0EE18300BCB9D9 /* AppDelegate.swift */; };
+		10109C5D1C0EE18300BCB9D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C5C1C0EE18300BCB9D9 /* ViewController.swift */; };
+		10109C601C0EE18300BCB9D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10109C5E1C0EE18300BCB9D9 /* Main.storyboard */; };
+		10109C621C0EE18300BCB9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10109C611C0EE18300BCB9D9 /* Assets.xcassets */; };
+		10109C651C0EE18400BCB9D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10109C631C0EE18400BCB9D9 /* LaunchScreen.storyboard */; };
+		10109C701C0EE18400BCB9D9 /* GrocerieZTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C6F1C0EE18400BCB9D9 /* GrocerieZTests.swift */; };
+		10109C7B1C0EE18400BCB9D9 /* GrocerieZUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C7A1C0EE18400BCB9D9 /* GrocerieZUITests.swift */; };
+		10109C801C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 10109C7F1C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app */; };
+		10109C861C0EE18400BCB9D9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10109C841C0EE18400BCB9D9 /* Interface.storyboard */; };
+		10109C881C0EE18400BCB9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10109C871C0EE18400BCB9D9 /* Assets.xcassets */; };
+		10109C8F1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 10109C8E1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		10109C961C0EE18400BCB9D9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C951C0EE18400BCB9D9 /* InterfaceController.swift */; };
+		10109C981C0EE18400BCB9D9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C971C0EE18400BCB9D9 /* ExtensionDelegate.swift */; };
+		10109C9A1C0EE18400BCB9D9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C991C0EE18400BCB9D9 /* NotificationController.swift */; };
+		10109C9C1C0EE18400BCB9D9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C9B1C0EE18400BCB9D9 /* GlanceController.swift */; };
+		10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */; };
+		10109CA01C0EE18400BCB9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10109C6C1C0EE18400BCB9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10109C4F1C0EE18300BCB9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10109C561C0EE18300BCB9D9;
+			remoteInfo = GrocerieZ;
+		};
+		10109C771C0EE18400BCB9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10109C4F1C0EE18300BCB9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10109C561C0EE18300BCB9D9;
+			remoteInfo = GrocerieZ;
+		};
+		10109C811C0EE18400BCB9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10109C4F1C0EE18300BCB9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10109C7E1C0EE18400BCB9D9;
+			remoteInfo = "GrocerieZ WatchKit App";
+		};
+		10109C901C0EE18400BCB9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10109C4F1C0EE18300BCB9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10109C8D1C0EE18400BCB9D9;
+			remoteInfo = "GrocerieZ WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		10109CA71C0EE18400BCB9D9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				10109C8F1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109CAB1C0EE18400BCB9D9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				10109C801C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		10109C571C0EE18300BCB9D9 /* GrocerieZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrocerieZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10109C5A1C0EE18300BCB9D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10109C5C1C0EE18300BCB9D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10109C5F1C0EE18300BCB9D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10109C611C0EE18300BCB9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10109C641C0EE18400BCB9D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10109C661C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10109C6B1C0EE18400BCB9D9 /* GrocerieZTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocerieZTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10109C6F1C0EE18400BCB9D9 /* GrocerieZTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocerieZTests.swift; sourceTree = "<group>"; };
+		10109C711C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10109C761C0EE18400BCB9D9 /* GrocerieZUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocerieZUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10109C7A1C0EE18400BCB9D9 /* GrocerieZUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocerieZUITests.swift; sourceTree = "<group>"; };
+		10109C7C1C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10109C7F1C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GrocerieZ WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10109C851C0EE18400BCB9D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		10109C871C0EE18400BCB9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10109C891C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10109C8E1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "GrocerieZ WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10109C941C0EE18400BCB9D9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		10109C951C0EE18400BCB9D9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		10109C971C0EE18400BCB9D9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		10109C991C0EE18400BCB9D9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		10109C9B1C0EE18400BCB9D9 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10109CA11C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10109C541C0EE18300BCB9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C681C0EE18400BCB9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C731C0EE18400BCB9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C8B1C0EE18400BCB9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10109C4E1C0EE18300BCB9D9 = {
+			isa = PBXGroup;
+			children = (
+				10109C591C0EE18300BCB9D9 /* GrocerieZ */,
+				10109C6E1C0EE18400BCB9D9 /* GrocerieZTests */,
+				10109C791C0EE18400BCB9D9 /* GrocerieZUITests */,
+				10109C831C0EE18400BCB9D9 /* GrocerieZ WatchKit App */,
+				10109C921C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension */,
+				10109C581C0EE18300BCB9D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10109C581C0EE18300BCB9D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10109C571C0EE18300BCB9D9 /* GrocerieZ.app */,
+				10109C6B1C0EE18400BCB9D9 /* GrocerieZTests.xctest */,
+				10109C761C0EE18400BCB9D9 /* GrocerieZUITests.xctest */,
+				10109C7F1C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app */,
+				10109C8E1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10109C591C0EE18300BCB9D9 /* GrocerieZ */ = {
+			isa = PBXGroup;
+			children = (
+				10109C5A1C0EE18300BCB9D9 /* AppDelegate.swift */,
+				10109C5C1C0EE18300BCB9D9 /* ViewController.swift */,
+				10109C5E1C0EE18300BCB9D9 /* Main.storyboard */,
+				10109C611C0EE18300BCB9D9 /* Assets.xcassets */,
+				10109C631C0EE18400BCB9D9 /* LaunchScreen.storyboard */,
+				10109C661C0EE18400BCB9D9 /* Info.plist */,
+			);
+			path = GrocerieZ;
+			sourceTree = "<group>";
+		};
+		10109C6E1C0EE18400BCB9D9 /* GrocerieZTests */ = {
+			isa = PBXGroup;
+			children = (
+				10109C6F1C0EE18400BCB9D9 /* GrocerieZTests.swift */,
+				10109C711C0EE18400BCB9D9 /* Info.plist */,
+			);
+			path = GrocerieZTests;
+			sourceTree = "<group>";
+		};
+		10109C791C0EE18400BCB9D9 /* GrocerieZUITests */ = {
+			isa = PBXGroup;
+			children = (
+				10109C7A1C0EE18400BCB9D9 /* GrocerieZUITests.swift */,
+				10109C7C1C0EE18400BCB9D9 /* Info.plist */,
+			);
+			path = GrocerieZUITests;
+			sourceTree = "<group>";
+		};
+		10109C831C0EE18400BCB9D9 /* GrocerieZ WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				10109C841C0EE18400BCB9D9 /* Interface.storyboard */,
+				10109C871C0EE18400BCB9D9 /* Assets.xcassets */,
+				10109C891C0EE18400BCB9D9 /* Info.plist */,
+			);
+			path = "GrocerieZ WatchKit App";
+			sourceTree = "<group>";
+		};
+		10109C921C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				10109C951C0EE18400BCB9D9 /* InterfaceController.swift */,
+				10109C971C0EE18400BCB9D9 /* ExtensionDelegate.swift */,
+				10109C991C0EE18400BCB9D9 /* NotificationController.swift */,
+				10109C9B1C0EE18400BCB9D9 /* GlanceController.swift */,
+				10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */,
+				10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */,
+				10109CA11C0EE18400BCB9D9 /* Info.plist */,
+				10109C931C0EE18400BCB9D9 /* Supporting Files */,
+			);
+			path = "GrocerieZ WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		10109C931C0EE18400BCB9D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10109C941C0EE18400BCB9D9 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10109C561C0EE18300BCB9D9 /* GrocerieZ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10109CAC1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ" */;
+			buildPhases = (
+				10109C531C0EE18300BCB9D9 /* Sources */,
+				10109C541C0EE18300BCB9D9 /* Frameworks */,
+				10109C551C0EE18300BCB9D9 /* Resources */,
+				10109CAB1C0EE18400BCB9D9 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10109C821C0EE18400BCB9D9 /* PBXTargetDependency */,
+			);
+			name = GrocerieZ;
+			productName = GrocerieZ;
+			productReference = 10109C571C0EE18300BCB9D9 /* GrocerieZ.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10109C6A1C0EE18400BCB9D9 /* GrocerieZTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10109CAF1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZTests" */;
+			buildPhases = (
+				10109C671C0EE18400BCB9D9 /* Sources */,
+				10109C681C0EE18400BCB9D9 /* Frameworks */,
+				10109C691C0EE18400BCB9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10109C6D1C0EE18400BCB9D9 /* PBXTargetDependency */,
+			);
+			name = GrocerieZTests;
+			productName = GrocerieZTests;
+			productReference = 10109C6B1C0EE18400BCB9D9 /* GrocerieZTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		10109C751C0EE18400BCB9D9 /* GrocerieZUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10109CB21C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZUITests" */;
+			buildPhases = (
+				10109C721C0EE18400BCB9D9 /* Sources */,
+				10109C731C0EE18400BCB9D9 /* Frameworks */,
+				10109C741C0EE18400BCB9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10109C781C0EE18400BCB9D9 /* PBXTargetDependency */,
+			);
+			name = GrocerieZUITests;
+			productName = GrocerieZUITests;
+			productReference = 10109C761C0EE18400BCB9D9 /* GrocerieZUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		10109C7E1C0EE18400BCB9D9 /* GrocerieZ WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10109CA81C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ WatchKit App" */;
+			buildPhases = (
+				10109C7D1C0EE18400BCB9D9 /* Resources */,
+				10109CA71C0EE18400BCB9D9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10109C911C0EE18400BCB9D9 /* PBXTargetDependency */,
+			);
+			name = "GrocerieZ WatchKit App";
+			productName = "GrocerieZ WatchKit App";
+			productReference = 10109C7F1C0EE18400BCB9D9 /* GrocerieZ WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		10109C8D1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10109CA41C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ WatchKit Extension" */;
+			buildPhases = (
+				10109C8A1C0EE18400BCB9D9 /* Sources */,
+				10109C8B1C0EE18400BCB9D9 /* Frameworks */,
+				10109C8C1C0EE18400BCB9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GrocerieZ WatchKit Extension";
+			productName = "GrocerieZ WatchKit Extension";
+			productReference = 10109C8E1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10109C4F1C0EE18300BCB9D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Zühlke Engineering";
+				TargetAttributes = {
+					10109C561C0EE18300BCB9D9 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					10109C6A1C0EE18400BCB9D9 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 10109C561C0EE18300BCB9D9;
+					};
+					10109C751C0EE18400BCB9D9 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 10109C561C0EE18300BCB9D9;
+					};
+					10109C7E1C0EE18400BCB9D9 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					10109C8D1C0EE18400BCB9D9 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 10109C521C0EE18300BCB9D9 /* Build configuration list for PBXProject "GrocerieZ" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10109C4E1C0EE18300BCB9D9;
+			productRefGroup = 10109C581C0EE18300BCB9D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10109C561C0EE18300BCB9D9 /* GrocerieZ */,
+				10109C6A1C0EE18400BCB9D9 /* GrocerieZTests */,
+				10109C751C0EE18400BCB9D9 /* GrocerieZUITests */,
+				10109C7E1C0EE18400BCB9D9 /* GrocerieZ WatchKit App */,
+				10109C8D1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10109C551C0EE18300BCB9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C651C0EE18400BCB9D9 /* LaunchScreen.storyboard in Resources */,
+				10109C621C0EE18300BCB9D9 /* Assets.xcassets in Resources */,
+				10109C601C0EE18300BCB9D9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C691C0EE18400BCB9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C741C0EE18400BCB9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C7D1C0EE18400BCB9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C881C0EE18400BCB9D9 /* Assets.xcassets in Resources */,
+				10109C861C0EE18400BCB9D9 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C8C1C0EE18400BCB9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109CA01C0EE18400BCB9D9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10109C531C0EE18300BCB9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C5D1C0EE18300BCB9D9 /* ViewController.swift in Sources */,
+				10109C5B1C0EE18300BCB9D9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C671C0EE18400BCB9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C701C0EE18400BCB9D9 /* GrocerieZTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C721C0EE18400BCB9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C7B1C0EE18400BCB9D9 /* GrocerieZUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10109C8A1C0EE18400BCB9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10109C9A1C0EE18400BCB9D9 /* NotificationController.swift in Sources */,
+				10109C981C0EE18400BCB9D9 /* ExtensionDelegate.swift in Sources */,
+				10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */,
+				10109C961C0EE18400BCB9D9 /* InterfaceController.swift in Sources */,
+				10109C9C1C0EE18400BCB9D9 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10109C6D1C0EE18400BCB9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10109C561C0EE18300BCB9D9 /* GrocerieZ */;
+			targetProxy = 10109C6C1C0EE18400BCB9D9 /* PBXContainerItemProxy */;
+		};
+		10109C781C0EE18400BCB9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10109C561C0EE18300BCB9D9 /* GrocerieZ */;
+			targetProxy = 10109C771C0EE18400BCB9D9 /* PBXContainerItemProxy */;
+		};
+		10109C821C0EE18400BCB9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10109C7E1C0EE18400BCB9D9 /* GrocerieZ WatchKit App */;
+			targetProxy = 10109C811C0EE18400BCB9D9 /* PBXContainerItemProxy */;
+		};
+		10109C911C0EE18400BCB9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10109C8D1C0EE18400BCB9D9 /* GrocerieZ WatchKit Extension */;
+			targetProxy = 10109C901C0EE18400BCB9D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		10109C5E1C0EE18300BCB9D9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10109C5F1C0EE18300BCB9D9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		10109C631C0EE18400BCB9D9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10109C641C0EE18400BCB9D9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		10109C841C0EE18400BCB9D9 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10109C851C0EE18400BCB9D9 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10109CA21C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10109CA31C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10109CA51C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "GrocerieZ WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		10109CA61C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "GrocerieZ WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		10109CA91C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = GrocerieZ_WatchKit_Extension;
+				INFOPLIST_FILE = "GrocerieZ WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		10109CAA1C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = GrocerieZ_WatchKit_Extension;
+				INFOPLIST_FILE = "GrocerieZ WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		10109CAD1C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GrocerieZ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		10109CAE1C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GrocerieZ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		10109CB01C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GrocerieZTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GrocerieZ.app/GrocerieZ";
+			};
+			name = Debug;
+		};
+		10109CB11C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GrocerieZTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GrocerieZ.app/GrocerieZ";
+			};
+			name = Release;
+		};
+		10109CB31C0EE18400BCB9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GrocerieZUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GrocerieZ;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		10109CB41C0EE18400BCB9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GrocerieZUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GrocerieZ;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10109C521C0EE18300BCB9D9 /* Build configuration list for PBXProject "GrocerieZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CA21C0EE18400BCB9D9 /* Debug */,
+				10109CA31C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10109CA41C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CA51C0EE18400BCB9D9 /* Debug */,
+				10109CA61C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		10109CA81C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CA91C0EE18400BCB9D9 /* Debug */,
+				10109CAA1C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		10109CAC1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CAD1C0EE18400BCB9D9 /* Debug */,
+				10109CAE1C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		10109CAF1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CB01C0EE18400BCB9D9 /* Debug */,
+				10109CB11C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		10109CB21C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10109CB31C0EE18400BCB9D9 /* Debug */,
+				10109CB41C0EE18400BCB9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10109C4F1C0EE18300BCB9D9 /* Project object */;
+}
