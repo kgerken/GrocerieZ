@@ -12,20 +12,43 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet var itemsTable: WKInterfaceTable!
+    let extensionDelegate = WKExtension.sharedExtension().delegate as! ExtensionDelegate
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
-    }
+            }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        loadTableData()
     }
 
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
+    
+    @IBAction func showAddItem() {
+        presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain, completion: {
+            (results) -> Void in
+            let extensionDelegate = WKExtension.sharedExtension().delegate as! ExtensionDelegate
+            extensionDelegate.items.append(results?.first as! String)
+            self.loadTableData()
+        })
+    }
+    
+    private func loadTableData() {
+        let items = extensionDelegate.items
+        itemsTable.setNumberOfRows(items.count, withRowType: "groceriezCell")
+        for i in 0..<items.count {
+            let row = itemsTable.rowControllerAtIndex(i) as! GrocerieZRowController
+            row.cellLabel.setText(items[i])
+        }
+    }
+    
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        extensionDelegate.items.removeAtIndex(rowIndex)
+        loadTableData()
+    }
 }

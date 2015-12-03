@@ -463,6 +463,7 @@
 		10A0A0A31A22341E00F3D9F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Zühlke Engineering";
 				TargetAttributes = {

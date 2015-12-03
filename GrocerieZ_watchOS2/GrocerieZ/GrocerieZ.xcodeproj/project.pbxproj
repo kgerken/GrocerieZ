@@ -24,6 +24,7 @@
 		10109C9C1C0EE18400BCB9D9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C9B1C0EE18400BCB9D9 /* GlanceController.swift */; };
 		10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */; };
 		10109CA01C0EE18400BCB9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */; };
+		101F39A61C104A6B00C6AF1B /* GrocerieZRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10109CA11C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrocerieZRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		10109C931C0EE18400BCB9D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */,
 				10109C941C0EE18400BCB9D9 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
@@ -453,6 +456,7 @@
 				10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */,
 				10109C961C0EE18400BCB9D9 /* InterfaceController.swift in Sources */,
 				10109C9C1C0EE18400BCB9D9 /* GlanceController.swift in Sources */,
+				101F39A61C104A6B00C6AF1B /* GrocerieZRowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -583,7 +587,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -657,6 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GrocerieZ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -668,6 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GrocerieZ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zuehlke.GrocerieZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -741,6 +747,7 @@
 				10109CA61C0EE18400BCB9D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10109CA81C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -749,6 +756,7 @@
 				10109CAA1C0EE18400BCB9D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10109CAC1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZ" */ = {
 			isa = XCConfigurationList;
@@ -757,6 +765,7 @@
 				10109CAE1C0EE18400BCB9D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10109CAF1C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZTests" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +774,7 @@
 				10109CB11C0EE18400BCB9D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10109CB21C0EE18400BCB9D9 /* Build configuration list for PBXNativeTarget "GrocerieZUITests" */ = {
 			isa = XCConfigurationList;
@@ -773,6 +783,7 @@
 				10109CB41C0EE18400BCB9D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
