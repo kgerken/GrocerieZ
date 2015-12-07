@@ -11,6 +11,7 @@ import WatchKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     var items = [String]()
+    var history = [HistoryEntry]()
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.

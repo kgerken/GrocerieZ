@@ -23,7 +23,7 @@ class GlanceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
         refresh()
-        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
     }
 
     override func didDeactivate() {

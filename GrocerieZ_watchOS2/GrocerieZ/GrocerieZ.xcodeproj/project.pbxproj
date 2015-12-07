@@ -25,6 +25,7 @@
 		10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10109C9D1C0EE18400BCB9D9 /* ComplicationController.swift */; };
 		10109CA01C0EE18400BCB9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */; };
 		101F39A61C104A6B00C6AF1B /* GrocerieZRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */; };
+		10F377F71C1195C700C7A011 /* HistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F377F61C1195C700C7A011 /* HistoryEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		10109C9F1C0EE18400BCB9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10109CA11C0EE18400BCB9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrocerieZRowController.swift; sourceTree = "<group>"; };
+		10F377F61C1195C700C7A011 /* HistoryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			children = (
 				101F39A51C104A6B00C6AF1B /* GrocerieZRowController.swift */,
 				10109C941C0EE18400BCB9D9 /* PushNotificationPayload.apns */,
+				10F377F61C1195C700C7A011 /* HistoryEntry.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10109C9A1C0EE18400BCB9D9 /* NotificationController.swift in Sources */,
+				10F377F71C1195C700C7A011 /* HistoryEntry.swift in Sources */,
 				10109C981C0EE18400BCB9D9 /* ExtensionDelegate.swift in Sources */,
 				10109C9E1C0EE18400BCB9D9 /* ComplicationController.swift in Sources */,
 				10109C961C0EE18400BCB9D9 /* InterfaceController.swift in Sources */,
