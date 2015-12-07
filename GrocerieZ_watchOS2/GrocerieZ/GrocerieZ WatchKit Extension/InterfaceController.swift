@@ -39,7 +39,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func showAddItem() {
         presentTextInputControllerWithSuggestions(nil, allowedInputMode: .Plain, completion: {
             (results) -> Void in
-            self.extensionDelegate.items.append(results?.first as! String)
+            self.extensionDelegate.addItem(results?.first as! String)
             self.loadTableData()
             self.updateHistory()
         })
