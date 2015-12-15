@@ -10,7 +10,9 @@ import UIKit
 
 class HistoryEntry: NSObject {
     
+    // Date of the entry
     var date: NSDate
+    // Number of items on the shopping list
     var amount: String
     
     init(withAmount amount: String, onDate date: NSDate) {

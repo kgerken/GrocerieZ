@@ -10,7 +10,13 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
+    /* Data is only stored in memory,
+       implement Core Data for persistence */
+
+    // Current shopping list items
     var items = [String]()
+    
+    // Shopping list history entries
     var history = [HistoryEntry]()
 
     func applicationDidFinishLaunching() {
@@ -29,6 +35,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func addItem(item: String) {
         if (!items.contains(item)) {
             items.append(item);
+        }
+    }
+    
+    func removeItem(item: String) {
+        if (items.contains(item)) {
+            items.removeAtIndex(items.indexOf(item)!)
         }
     }
 
