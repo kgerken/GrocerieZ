@@ -38,7 +38,8 @@ class ViewController: UITableViewController, WCSessionDelegate {
             inputTextField = textField
             textField.autocapitalizationType = .Sentences
         })
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
             let item: String = inputTextField!.text!
             self.addItem(item)
             self.sendMessageToWatch(["ADD": item])

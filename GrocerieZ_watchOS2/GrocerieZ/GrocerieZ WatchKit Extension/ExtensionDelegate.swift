@@ -33,7 +33,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
     
     func addItem(item: String) {
-        if (!items.contains(item)) {
+        if (item.characters.count > 0 && !items.contains(item)) {
             items.append(item);
         }
     }
