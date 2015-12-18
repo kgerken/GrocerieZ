@@ -37,10 +37,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
         switch complication.family {
         case .UtilitarianSmall:
-            let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Utilitarian")!)
-            template.textProvider = CLKSimpleTextProvider(text: String(extensionDelegate.items.count))
-            let entry = CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: template)
+            let entry = CLKComplicationTimelineEntry(date: NSDate(), complicationTemplate: getUtilitarianSmallFlatTemplateForAmount(String(extensionDelegate.items.count)))
             handler(entry)
             break
         default:
@@ -54,7 +51,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var entries = [CLKComplicationTimelineEntry]()
         for item in items {
             if (date.compare(item.date) == .OrderedDescending) {
-                entries.append(CLKComplicationTimelineEntry(date: item.date, complicationTemplate: getUtilitarianSmallFlatTemplateForHistoryEntry(item)))
+                entries.append(CLKComplicationTimelineEntry(date: item.date, complicationTemplate: getUtilitarianSmallFlatTemplateForAmount(item.amount)))
                 if (entries.count == limit) {
                     break;
                 }
@@ -80,10 +77,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getPlaceholderTemplateForComplication(complication: CLKComplication, withHandler handler: (CLKComplicationTemplate?) -> Void) {
         switch complication.family {
         case .UtilitarianSmall:
-            let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Utilitarian")!)
-            template.textProvider = CLKSimpleTextProvider(text: "--")
-            handler(template)
+            handler(getUtilitarianSmallFlatTemplateForAmount("--"))
             break
         default:
             handler(nil)
@@ -93,10 +87,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Helper Methods
     
-    private func getUtilitarianSmallFlatTemplateForHistoryEntry(entry: HistoryEntry) -> CLKComplicationTemplateUtilitarianSmallFlat {
+    private func getUtilitarianSmallFlatTemplateForAmount(amount: String) -> CLKComplicationTemplateUtilitarianSmallFlat {
         let template = CLKComplicationTemplateUtilitarianSmallFlat()
         template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Utilitarian")!)
-        template.textProvider = CLKSimpleTextProvider(text: entry.amount)
+        template.imageProvider!.tintColor = UIColor(red: 255/255, green: 130/255, blue: 10/255, alpha: 1)
+        template.textProvider = CLKSimpleTextProvider(text: amount)
+        template.textProvider.tintColor = UIColor(red: 255/255, green: 130/255, blue: 10/255, alpha: 1)
         return template;
     }
     
